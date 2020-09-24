@@ -1,7 +1,6 @@
 require('http')
 .Server((req, res) => {
-  res.writeHead({'Content-Type': 'text/html; charset=utf-8'});
-  const file = require('fs').readFileSync('./index.html');
-  res.end(file);
-} 
+  res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+  require('fs').createReadStream('./index.html').pipe(res);
+}) 
 .listen(process.env.PORT);
